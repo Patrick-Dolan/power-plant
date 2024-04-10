@@ -10,7 +10,7 @@ const storeState = () => {
     return (stateChangeFunction = state => state) => {
       const newState = stateChangeFunction(currentState[plantNum]);
       currentState[plantNum] = {...newState};
-      console.log(currentState);
+      console.log(currentState); // eslint-disable-line
       return newState;
     };
   };
@@ -57,6 +57,7 @@ window.onload = function() {
 
   document.getElementById('create-plant').onclick = function() {
     // Create new Plant and Plant Card
+    // Unique plants could be added by making the state control closure include something that changed it
     const newPlantStateControl = stateControl();
     const plantNum = newPlantStateControl().plant;
     const plantCard = createPlantCardElement(plantNum);
